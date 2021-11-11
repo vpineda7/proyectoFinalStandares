@@ -149,9 +149,9 @@ namespace ZonaTecnologica
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificarCompra")]
-		public ISingleResult<SP_ModificarCompraResult> SP_ModificarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_compra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio_u, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_producto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuarioActualiza)
+		public ISingleResult<SP_ModificarCompraResult> SP_ModificarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_compra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio_u, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_producto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuarioActualiza)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra, cantidad, precio_u, fecha, id_producto, id_proveedor, estado, usuarioActualiza);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra, cantidad, precio_u, id_producto, id_proveedor, estado, usuarioActualiza);
 			return ((ISingleResult<SP_ModificarCompraResult>)(result.ReturnValue));
 		}
 		

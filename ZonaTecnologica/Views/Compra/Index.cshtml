@@ -61,9 +61,11 @@
             @Html.DisplayFor(modelItem => item.fecha_inserta)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <div class="btn-group">
+                <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Compra", new { id = item.id_compra })'><i class='bx bx-pencil'></i>Editar</a>
+                <a role="button" class="btn btn-default" href='@Url.Action("Details", "Compra", new { id = item.id_compra })'><i class='bx bx-show'></i>Detalles</a>
+                <a role="button" class="btn btn-default" href='@Url.Action("Delete", "Compra", new { id = item.id_compra })'><i class='bx bx-trash'></i>Eliminar</a>
+            </div>
         </td>
     </tr>
 }
