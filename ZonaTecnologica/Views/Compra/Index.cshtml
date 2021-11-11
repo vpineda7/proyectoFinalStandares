@@ -11,12 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id_compra)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_producto)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.producto)
         </th>
@@ -33,25 +28,16 @@
             @Html.DisplayNameFor(model => model.usuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.id_proveedor)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.nombre_proveedor)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_inserta)
+            Fecha
         </th>
-        <th></th>
+        <th>Acciones</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_compra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_producto)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.producto)
         </td>
@@ -67,9 +53,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.usuario)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_proveedor)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.nombre_proveedor)
         </td>
