@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+}
+
+
+<html>
+<head>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Login Doctor</title>
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+<body style="background-color: #666666;">
+   
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form"  name="formulario1" action="" method="post">
+                    
+
+                    <span class="login100-form-title p-b-43">
+                        Login Doctor
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input">
+
+                        <input id="usuario" required class="input100" type="text" name="usuario" placeholder="Nombre de Usuario">
+                        <span class="focus-input100"></span>
+
+                    </div>
+
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100"  type="password" name="password" placeholder="Contraseña">
+                        <span class="focus-input100"></span>
+
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+                        <input id="rol" name="rol" type="hidden" value="empleado">
+                        <div >
+
+                            <a role="button" href="#" onclick="enviar('/Home/Forgot')" class="txt1">Forgot Password?</a>
+                                
+                            
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button  class="login100-form-btn" onclick="enviar('/Home/Login')">
+                            Login
+                        </button>
+                    </div>
+
+
+                    
+                        </form>
+
+                    <div class="login100-more" style="background-image: url('../../assets/img/paisaje2.jpg');">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script language="javascript" type="text/javascript">
+        function enviar(pagina) {
+            document.formulario1.action = pagina;
+            document.formulario1.submit();
+
+        }
+    </script>
+        
+       
+    
+</body>
+   
+</html>

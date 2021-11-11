@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+
+    <title>Inicio</title>
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/assets/img/favicon.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <style>
+        .texto {
+            font-size: 50px;
+            font-weight: 600;
+            color: darkblue;
+            transition: 2.5s;
+        }
+
+            .texto:hover {
+                color: yellow;
+                cursor: default;
+            }
+
+
+        .imagen {
+            border: 1px solid #333;
+            box-shadow: 2px 5px 5px #808080;
+            border-radius: 5px;
+            height: 200px;
+            width: auto;
+            margin-bottom: 3%;
+        }
+
+        .indicacion {
+            font-size: 18px;
+        }
+
+        .zom:hover .imagen {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .contenedor {
+            overflow: hidden;
+        }
+
+        .btn-Inicio {
+            background-image: url('/assets/img/home.png');
+            margin: 20px;
+            background-position: center;
+            background-size: contain;
+            width: 70px;
+            height: 70px;
+            border: none;
+        }
+
+            .btn-Inicio:hover {
+                cursor: pointer;
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+    </style>
+
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <a href="/Home/inicioMenu"><button class="btn-Inicio" ></button>
+        </a>
+        <center>
+            
+            <h1 class="texto">¡Bienvenido!</h1>
+            <p class="indicacion">Elige una de las opciones para continuar.</p>
+            <br /><br />
+            <div class="row">
+                <div class="col-6 col-md-4 zom"><a href="@Url.Action("Index", "Home")"><img class="imagen" src="~/assets/img/administrador.png" alt="Administrador"></a></div>
+                <div class="col-6 col-md-4 zom"><a href="@Url.Action("Index2", "Home")"><img class="imagen" src="~/assets/img/empleado.png" alt="Doctor"></a></div>
+                <div class="col-6 col-md-4 zom"><a href="@Url.Action("Index3", "Home")"><img class="imagen" src="~/assets/img/cliente.png" alt="Paciente"></a></div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-4"><h3>Administrador</h3></div>
+                <div class="col-6 col-md-4"><h3>Empleado</h3></div>
+                <div class="col-6 col-md-4"><h3>Cliente</h3></div>
+            </div>
+
+        </center>
+    </div>
+</body>
+</html>

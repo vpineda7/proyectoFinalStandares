@@ -1,0 +1,157 @@
+﻿@model IEnumerable<ZonaTecnologica.Vusuario>
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-success">@ViewBag.Message</div>
+    }
+}
+
+@{
+    ViewBag.Title = "Usuario";
+}
+
+<h2>Usuarios</h2>
+
+<a role="button" class="btn btn-default" href='@Url.Action("Create", "Usuario")' style="margin-bottom: 2%;"><i class='bx bx-pencil'></i>Nuevo Usuario</a>
+<div class="container-1">
+    <span class="icon"><i class="fa fa-search"></i></span>
+    <input type="text" id="txtsearch" placeholder="Buscar..." class="bus" />
+
+    <select name="select" id="select">
+        <option value="UserName" id="UserName">UserName</option>
+        <option value="Nombre" id="Nombre">Nombre</option>
+        <option value="Rol" id="Rol">Rol</option>
+        <option value="Email" id="Email">Email</option>
+    </select>
+
+</div>
+<hr />
+
+<table class="table table-hover table-striped">
+    <thead class="table-dark">
+        <tr style="background:#333; color: white; font-weight: 700; text-align: center; justify-content:center; align-content:center; " align="center">
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioActualiza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaActualiza)
+            </th>
+
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioActualiza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaActualiza)
+            </td>
+            <td>
+
+                <div class="btn-group">
+                    <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Usuario", new { id = item.ID })'><i class='bx bx-pencil'></i>Editar</a>
+                    <a role="button" class="btn btn-default" href='@Url.Action("Details", "Usuario", new { id = item.ID })'><i class='bx bx-show'></i>Detalles</a>
+                    <a role="button" class="btn btn-default" href='@Url.Action("Delete", "Usuario", new { id = item.ID })'><i class='bx bx-trash'></i>Eliminar</a>
+                </div>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+
+    $('select#select').on('change', function () {
+        var opcion = $(this).val();
+
+
+        $("#txtsearch").on("keyup", function () {
+            var txtenter = $(this).val();
+            $("table tr").each(function (results) {
+                if (results !== 0) {
+
+
+                    if (opcion == "UserName") {
+                        var id = $(this).find("td:nth-child(1)").text();
+                    }
+                    else if (opcion == "Nombre") {
+                        var id = $(this).find("td:nth-child(2)").text();
+                    }
+                    else if (opcion == "Rol") {
+                        var id = $(this).find("td:nth-child(3)").text();
+                    }
+                    else if (opcion == "Email") {
+                        var id = $(this).find("td:nth-child(4)").text();
+                    }
+
+                    if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+
+                    }
+
+                }
+            });
+
+        });
+
+    });
+
+</script>
+<script>
+
+
+    $("#txtsearch").on("keyup", function () {
+        var txtenter = $(this).val();
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+
+                var id = $(this).find("td:nth-child(1)").text();
+                if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+
+                }
+
+            }
+        });
+
+    });
+
+</script>

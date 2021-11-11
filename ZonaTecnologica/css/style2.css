@@ -1,0 +1,240 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.Padre {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cuadro-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52%;
+    height: auto;
+}
+
+.cuadro-11 {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.cuadro-1-1 {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    margin-left: 13%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.cuadro-1-1-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5%;
+}
+
+.cuadro-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38%;
+    height: auto;
+}
+
+.cuadro-2-1 {
+    width: 100%;
+    height: auto;
+}
+
+.imagen-security {
+    width: 50%;
+    height: auto;
+    margin: 5%;
+}
+
+.imagen-logo {
+    width: 30%;
+    height: auto;
+}
+
+.correo-texto {
+    font-size: 15px;
+}
+
+.user {
+    width: 15px;
+    height: 15px;
+    margin-right: 1%;
+}
+
+.texto-1 {
+    width: 40%;
+    color: gray;
+}
+
+.boton-atras {
+    margin-right: 60%;
+    border-radius: 2%;
+    width: 20%;
+    height: 30px;
+    background: #3079E4;
+    color: white;
+    font-weight: 500;
+    border: 0;
+}
+
+.boton-siguiente {
+    border-radius: 2%;
+    position: relative;
+    right: 1px;
+    float: right;
+    width: 20%;
+    height: 30px;
+    background: #3079E4;
+    color: white;
+    font-weight: 500;
+    border: 0;
+}
+
+
+.botones-accion {
+    margin-top: 7%;
+    padding-left: 4%;
+    padding-right: 4%;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.form-user {
+    width: 80%;
+    height: auto;
+}
+
+.form-user2 {
+    width: 100%;
+    height: auto;
+}
+
+.input-form01 {
+    width: 100%;
+    height: 34px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    transition: 0.5s;
+    padding-left: 2%;
+    color: grey;
+}
+
+.input-form02 {
+    width: 98%;
+    height: 34px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    transition: 0.5s;
+    padding-left: 2%;
+    color: grey;
+}
+
+.div-input {
+    width: auto;
+    height: auto;
+    margin: 4%;
+}
+
+.div-input-01 {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 4%;
+}
+
+
+.input-form01:focus {
+    background: #ccc3;
+    color: black;
+}
+
+.texto-bajo-input {
+    font-size: 13px;
+    color: gray;
+    opacity: 3;
+}
+
+.texto-bajo2-input {
+    font-size: 13px;
+    color: gray;
+    opacity: 3;
+}
+
+.boton-siguiente:hover {
+    background: #1F63B4;
+    cursor: pointer;
+}
+
+.boton-atras:hover {
+    background: #1F63B4;
+    cursor: pointer;
+}
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .Padre {
+        display: block;
+        height: auto;
+    }
+
+    .cuadro-1 {
+        width: 100%;
+        height: auto;
+    }
+
+    .cuadro-11 {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .cuadro-2 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+
+    .cuadro-1-1 {
+        width: 100%;
+        height: auto;
+        padding-left: 10%;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,112 @@
+﻿@model ZonaTecnologica.SP_BuscarUsuarioResult
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalles</title>
+</head>
+<body>
+    <div>
+        <h4>Usuarios</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.correo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.correo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Rol)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Rol)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.vigencia_password)
+            </dt>
+
+            <dd>
+                @{
+                    string parameterValue = Model.vigencia_password.Date.ToString("yyyy-MM-dd");
+                }
+                @Html.DisplayFor(model => parameterValue)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usuarioInserta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usuarioInserta)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaInserta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaInserta)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usuarioActualiza)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usuarioActualiza)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaActualiza)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaActualiza)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.foto)
+            </dt>
+
+            <dd>
+                <img src="~/Usuario/RetrieveImage/@Model.ID" class="img-fluid img-thumbnail" alt="Eniun" style="width: 25%; height: auto; " />
+            </dd>
+
+
+
+        </dl>
+
+        <div class="form-actions no-color">
+            <a class="btn btn-default" href='@Url.Action("index", "Usuario")'>Regresar</a> |
+            <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Usuario", new { id = Model.ID })'><i class='bx bx-pencil'></i>Editar</a>
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

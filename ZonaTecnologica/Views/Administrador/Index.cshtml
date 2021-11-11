@@ -1,0 +1,55 @@
+﻿
+<style>
+    .texto {
+        font-size: 50px;
+        font-weight: 600;
+        color: darkblue;
+        transition: 2.5s;
+    }
+
+    .texto:hover {
+        color: yellow;
+        cursor: default;
+    }
+
+
+    .cita {
+        border: 1px solid #333;
+        box-shadow: 2px 5px 5px #808080;
+        border-radius: 5px;
+        height: 200px;
+        width: auto;
+        margin-bottom: 3%;
+    }
+
+    .indicacion{
+        font-size: 18px;
+    }
+
+</style>
+<br />
+<br />
+<center>
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-danger">@ViewBag.Message</div>
+        }
+    }
+
+    <h1 class="texto">Bienvenido Administrador @Session["UserName"]</h1>
+    <p class="indicacion">Elige una de las opciones para continuar.</p>
+
+    <div class="row">
+        <div class="col-6 col-md-4"><a href="#"><img class="cita" src="~/assets/img/categoria.jpg" alt="image"></a></div>
+        <div class="col-6 col-md-4"><a href="#"><img class="cita" src="~/assets/img/cliente.png" alt="image"></a></div>
+        <div class="col-6 col-md-4"><a href="#"><img class="cita" src="~/assets/img/producto.jpg" alt="image"></a></div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-4"><a href="#"><img class="cita" src="~/assets/img/proveedores.png" alt="image"></a></div>
+        <div class="col-6 col-md-4"><a href="#"><img class="cita" src="~/assets/img/compras.png" alt="image"></a></div>
+        <div class="col-6 col-md-4"></div>
+    </div>
+
+
+</center>

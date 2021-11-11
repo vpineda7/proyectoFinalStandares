@@ -1,0 +1,68 @@
+﻿@model ZonaTecnologica.SP_BuscarUsuarioResult
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eliminar</title>
+</head>
+<body>
+    <h2>Eliminar</h2>
+
+    <h3>¿Estas seguro de eliminar este usuario?</h3>
+    <div>
+        <h4>Usuarios</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Rol)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Rol)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <a class="btn btn-default" href='@Url.Action("index", "Usuario")'>Regresar</a> |
+                <input type="submit" value="Eliminar" class="btn btn-default" />
+
+
+            </div>
+        }
+    </div>
+</body>
+</html>

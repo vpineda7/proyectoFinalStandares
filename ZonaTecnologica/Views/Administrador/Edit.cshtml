@@ -1,0 +1,108 @@
+﻿@model Hospital.Vusuario
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="~/css/usuario_Imagenes_Editar.css">
+
+</head>
+<body>
+    @using (Html.BeginForm("Edit", "Administrador", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="Cuadro-Padre">
+
+
+            <div class="cuadro-1">
+                
+                <center>
+                    <h2>Actualizar Usuario</h2>
+                    <h4>@Session["UserName"]</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+                    @Html.HiddenFor(model => model.id_empleado)
+                    @Html.HiddenFor(model => model.id_rol)
+                    @Html.HiddenFor(model => model.vigencia_password)
+
+
+                <div class="">
+                    
+                        <img id="blah" src="~/Usuario/RetrieveImage/@Model.ID" class="img-fluid img-thumbnail img-cuadrito" style="width: 50%; height: auto;" alt="Eniun" /><br />
+                    
+                    
+                    <label for="file">Seleccinar otra foto</label><br />
+                    <input class="form-control Examinar-Imagen" type='file' name="img" id="img" value="" accept="image/png, .jpeg, .jpg, image/gif" />
+
+
+
+                </div>
+                </center>
+            </div>
+
+            <div class="cuadro-2">
+
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-10 label-editar-usuario" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-10 label-editar-usuario">Password</label><br />
+                    <div class="col-md-10">
+
+                        <input class="form-control" type="password" name="password" value="default123456" required placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Save" class="btn-editar-usuario" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) { //Revisamos que el input tenga contenido
+            var reader = new FileReader(); //Leemos el contenido
+
+            reader.onload = function (e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+            $("#imagen").css('display', 'none');
+        }
+    }
+
+    $("#img").change(function () { //Cuando el input cambie (se cargue un nuevo archivo) se va a ejecutar de nuevo el cambio de imagen y se verá reflejado.
+        readURL(this);
+    });
+
+</script>

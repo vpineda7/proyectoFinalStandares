@@ -1,0 +1,159 @@
+﻿@model ZonaTecnologica.SP_BuscarUsuarioResult
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="~/css/usuario_Imagenes_Editar.css">
+</head>
+<body>
+    @using (Html.BeginForm("Edit", "Usuario", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="Cuadro-Padre">
+
+
+            <div class="cuadro-1">
+
+                <center>
+                    <h2>Actualizar Usuario</h2>
+                    <h4>@Model.UserName</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <label for="file">Seleccinar otra foto</label><br />
+                            <img id="blah" src="~/Usuario/RetrieveImage/@Model.ID" class="img-fluid img-thumbnail" alt="Eniun" style="width: 35%; height: auto; " />
+                            <br />
+
+                            <input class="form-control" type='file' name="img" id="img" accept="image/png, .jpeg, .jpg, image/gif" /> <br>
+
+
+                        </div>
+                    </div>
+                </center>
+            </div>
+
+            <div class="cuadro-2">
+
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="control-label col-md-10">Elija un rol</label><br />
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.id_rol, new SelectList(ViewBag.Rol, "id_rol", "rol"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
+                </div>
+
+
+                @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                @Html.LabelFor(model => model.primer_nombre, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.primer_nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.primer_nombre, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                @Html.LabelFor(model => model.segundo_nombre, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.segundo_nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.segundo_nombre, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                @Html.LabelFor(model => model.primer_apellido, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.primer_apellido, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.primer_apellido, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                @Html.LabelFor(model => model.segundo_apellido, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.segundo_apellido, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.segundo_apellido, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+                @Html.LabelFor(model => model.vigencia_password, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.vigencia_password, new { htmlAttributes = new { type = "date", @class = "form-control", @Value = Model.vigencia_password.Date.ToString("yyyy-MM-dd") } })
+                    @Html.ValidationMessageFor(model => model.vigencia_password, "", new { @class = "text-danger" })
+                </div>
+
+
+                @Html.LabelFor(model => model.trylogin, htmlAttributes: new { @class = "control-label col-md-10" })<br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.trylogin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.trylogin, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" /> |
+                        <a class="btn btn-default" href='@Url.Action("index", "Usuario")'>Regresar</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) { //Revisamos que el input tenga contenido
+            var reader = new FileReader(); //Leemos el contenido
+
+            reader.onload = function (e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+            $("#imagen").css('display', 'none');
+        }
+    }
+
+    $("#img").change(function () { //Cuando el input cambie (se cargue un nuevo archivo) se va a ejecutar de nuevo el cambio de imagen y se verá reflejado.
+        readURL(this);
+    });
+
+</script>

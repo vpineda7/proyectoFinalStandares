@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title Hospital</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/flexslider.css" type="text/css">
+    <link rel="stylesheet" href="~/css/buscar.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/MenuLayout.css">
+    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/assets/img/favicon.png">
+
+
+
+
+    <style>
+
+
+
+        .sidebar.open {
+            width: 250px;
+            overflow-y: auto;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        .li-hover {
+            transition: 0.5s;
+        }
+
+            .li-hover:hover {
+                background: #E9E9E9;
+            }
+    </style>
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+
+
+
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx  icon'></i>
+            <div class="logo_name">HOSPITAL</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+
+
+
+            @if (Convert.ToString(Session["Rol"]) == "empleado")
+            {
+
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Doctor")">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Inicio</span>
+                    </a>
+                    <span class="tooltip">Inicio</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Pacientes")">
+                        <i class='bx bx-user'></i>
+                        <span class="links_name">Pacientes</span>
+                    </a>
+                    <span class="tooltip">Pacientes</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Cita",new { id=1})">
+                        <i class='bx bx-calendar'></i>
+                        <span class="links_name">Citas</span>
+                    </a>
+                    <span class="tooltip">Citas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index2", "Consulta")">
+                        <i class='bx bx-message-alt'></i>
+                        <span class="links_name">Consulta</span>
+                    </a>
+                    <span class="tooltip">Consulta</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Pregunta")">
+                        <i class='bx bx-question-mark'></i>
+                        <span class="links_name">Preguntas</span>
+                    </a>
+                    <span class="tooltip">Preguntas</span>
+                </li>
+            }
+            @if (Convert.ToString(Session["Rol"]) == "administrador")
+            {
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Administrador")">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Inicio</span>
+                    </a>
+                    <span class="tooltip">Inicio</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Categoria")">
+                        <i class='bx bx-message-alt'></i>
+                        <span class="links_name">Categorias</span>
+                    </a>
+                    <span class="tooltip">Categorias</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Producto")">
+                        <i class='bx bx-folder'></i>
+                        <span class="links_name">Productos</span>
+                    </a>
+                    <span class="tooltip">Productos</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Inventario")">
+                        <i class='bx bx-calendar'></i>
+                        <span class="links_name">Inventario</span>
+                    </a>
+                    <span class="tooltip">Inventario</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("index", "Usuario")">
+                        <i class='bx bx-user-pin'></i>
+                        <span class="links_name">Usuarios</span>
+                    </a>
+                    <span class="tooltip">Usuarios</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Proveedor")">
+                        <i class='bx bx-id-card'></i>
+                        <span class="links_name">Proveedores</span>
+                    </a>
+                    <span class="tooltip">Proveedores</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Compra")">
+                        <i class='bx bx-food-menu'></i>
+                        <span class="links_name">Compras</span>
+                    </a>
+                    <span class="tooltip">Compras</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Venta")">
+                        <i class='bx bx-sitemap'></i>
+                        <span class="links_name">Ventas</span>
+                    </a>
+                    <span class="tooltip">Ventas</span>
+                </li>
+
+
+
+
+            }
+            @if (Convert.ToString(Session["Rol"]) == "cliente")
+            {
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Paciente")">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Inicio</span>
+                    </a>
+                    <span class="tooltip">Inicio</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-folder'></i>
+                        <span class="links_name">Expediente</span>
+                    </a>
+                    <span class="tooltip">Expediente</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Pregunta", "Home")">
+                        <i class='bx bx-question-mark'></i>
+                        <span class="links_name">Preguntas</span>
+                    </a>
+                    <span class="tooltip">Preguntas</span>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Opciones", "CitaP")">
+                        <i class='bx bx-calendar'></i>
+                        <span class="links_name">Citas</span>
+                    </a>
+                    <span class="tooltip">Citas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "FarmaciaPacientes")">
+                        <i class='bx bx-cart-alt'></i>
+                        <span class="links_name">Farmacia</span>
+                    </a>
+                    <span class="tooltip">Farmacia</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "ConsultaP")">
+                        <i class='bx bx-message-alt'></i>
+                        <span class="links_name">Consulta</span>
+                    </a>
+                    <span class="tooltip">Consulta</span>
+                </li>
+
+            }
+            <!---<li>
+        <a href="/Home/Logout">
+            <i class='bx bx-cog'></i>
+            <span class="links_name">Salir</span>
+        </a>
+        <span class="tooltip">Salir</span>
+    </li>-->
+
+            <li class="profile">
+                <div class="profile-details">
+                    @if (Convert.ToString(Session["Rol"]) == "cliente")
+                    {
+                        <img src="~/Paciente/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="img-circle" alt="Avatar">
+                    }
+                    @if (Convert.ToString(Session["Rol"]) == "administrador")
+                    {
+                        <img src="~/Administrador/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="img-circle" alt="Avatar">
+                    }
+                    @if (Convert.ToString(Session["Rol"]) == "empleado")
+                    {
+                        <img src="~/Doctor/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="img-circle" alt="Avatar">
+                    }
+                    <div class="name_job">
+                        <div class="name">@Session["UserName"]</div>
+
+                    </div>
+                </div>
+                <a href="/Home/Logout"><i class='bx bx-log-out' id="log_out"></i> </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <section class="home-section">
+
+
+        <div class="main">
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <nav class="sabe">
+                    <div style="height: 100%; display: flex; position: absolute; justify-content: center; align-items: center;  "><img src="~/assets/img/nube.png" width="150" height="auto"></div>
+                    <div class="MM">
+
+                        @if (Convert.ToString(Session["Rol"]) == "cliente")
+                        {
+
+                            <div class="dropdown" style="color: white; display: flex; width: auto; height: auto; justify-content: center; align-items: center; text-align: center; margin-right: 5%; background: none;">
+
+                                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="width: 50px; height: 55px; border: none; background: none; ">
+                                    <i class="fas fa-shopping-cart" style="color: white; margin-right: 2%; font-size: 15px;"></i><span style="background: white; color: black; border-radius: 50%; height: auto; width: auto; text-align: center; text-decoration: none; padding-left: 6px; padding-right: 6px; ">@Session["CartCount"]</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style=" margin-top:200px; width: 200px; height: 80px; background: white;">
+                                    <center>
+                                    <li align="center" class="li-hover" style="width: 100%;"><a role="button" class="" style="font-size: 13px;   width: 100%; padding: 5px 15px 5px 15px; color: black; text-decoration: none; " href="@Url.Action("Compras", "Paciente",new { id = Convert.ToInt32(Session["IdUsuario"]) } )">    Mis compras    </a></li>
+
+                                    <li align="center" class="li-hover" style="width: 100%;"><a role="button" class="" style="font-size: 13px; width: 100%; padding: 5px 15px 5px 15px; color: black; text-decoration: none;" href="@Url.Action("AgregarCarrito", "FarmaciaPacientes", null, null)">    Carrito    </a></li>
+                                    </center>
+                                </ul>
+                            </div>
+                        }
+
+                        <div class="dropdown" style="color: white; display: flex; width: 180px; height: 55px;">
+
+
+                            <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px; height: 50px; background: none; border: none;">
+                                @if (Convert.ToString(Session["Rol"]) == "cliente")
+                                {
+                                    <img src="~/Paciente/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" style="width: 23%; height: 40px; border-radius: 50%; margin-right: 5px;" alt="Avatar">@Session["UserName"]
+                                }
+                                @if (Convert.ToString(Session["Rol"]) == "administrador")
+                                {<img src="~/Administrador/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" style="width: 23%; height: 40px; border-radius: 50%; margin-right: 5px;" alt="Avatar">@Session["UserName"]
+                            }
+                                @if (Convert.ToString(Session["Rol"]) == "empleado")
+                                {<img src="~/Doctor/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" style="width: 23%; height: 40px; border-radius: 50%; margin-right: 5px;" alt="Avatar">@Session["UserName"]
+                            }
+
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 300px;">
+                                <li>
+                                    <center>
+                                        @if (Convert.ToString(Session["Rol"]) == "cliente")
+                                        {
+                                            <img src="~/Paciente/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="ImageUserLogin" alt="Avatar" style="margin: 5px; width: 23%; height: 60px;">
+                                        }
+                                        @if (Convert.ToString(Session["Rol"]) == "administrador")
+                                        {
+                                            <img src="~/Administrador/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="ImageUserLogin" alt="Avatar" style="margin: 5px; width: 23%; height: 60px;">
+                                        }
+                                        @if (Convert.ToString(Session["Rol"]) == "empleado")
+                                        {
+                                            <img src="~/Doctor/RetrieveImage/@Convert.ToInt32(Session["IdUsuario"])" class="ImageUserLogin" alt="Avatar" style="margin: 5px; width: 23%; height: 60px;">
+                                        }
+                                    </center>
+                                </li>
+
+                                <li><p class="texLog" style="font-size: 13px;">@Session["UserName"]</p></li>
+                                <li><p class="texLog" style="font-weight: 300; font-size: 13px;">@Session["email"]</p></li>
+                                <br />
+                                <center>
+
+                                <li align="center"><a role="button" class="" style="font-size: 13px; border-radius: 20px; border: #bcbcbc 1px solid; width: 200px; padding: 5px 15px 5px 15px; color: black; " href="@Url.Action("Opciones_Cuenta","Home")">    Gestionar tu cuenta personal    </a></li>
+
+                                <br />
+                                <br />
+                                <li align="center"><a role="button" class="" style="font-size: 13px; border-radius: 5px; border: #bcbcbc 1px solid; width: 200px; padding: 5px 15px 5px 15px; color: black; margin-top: 20px;" href="/Home/Logout">Cerrar Sesión</a></li>
+                                <br />
+                                <li><hr class="dropdown-divider"></li>
+                                <li><p class="texLog" style="font-size: 9px;">Politica de Privacidad | Terminos y Servicios</p></li>
+                                </center>
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+                <div class="container-fluid" style="margin:0; height: 100vh;">
+                    @RenderBody()
+                </div>
+
+
+
+
+                <!--
+                <footer class="footer" style="bottom: -500px;">
+                    <div class="l-footer">
+                        <h1>
+                            <img src="https://i.postimg.cc/y62wcLBq/logo.png" alt="">
+                        </h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam atque recusandae in sit sunt molestiae aliquid fugit. Mollitia eaque tempore iure sit nobis? Vitae nemo, optio maiores numquam quis recusandae.
+                        </p>
+                    </div>
+                    <ul class="r-footer">
+                        <li>
+                            <h2>
+                                Social
+                            </h2>
+                            <ul class="box">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Pinterest</a></li>
+                                <li><a href="#">Dribbble</a></li>
+                            </ul>
+                        </li>
+                        <li class="features">
+                            <h2>
+                                Information
+                            </h2>
+                            <ul class="box h-box">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Pricing</a></li>
+                                <li><a href="#">Sales</a></li>
+                                <li><a href="#">Tickets</a></li>
+                                <li><a href="#">Certifications</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h2>
+                                Legal
+                            </h2>
+                            <ul class="box">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Contract</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="b-footer">
+                        <p>
+                            All rights reserved by ©CompanyName 2020
+                        </p>
+                    </div>
+                </footer>-->
+
+                <div class="clearfix"></div>
+
+            </div>
+
+            <!-- END MAIN CONTENT -->
+        </div>
+    </section>
+
+
+
+
+
+    <!-- END WRAPPER -->
+    <!-- Javascript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/Scripts/MenuAnim.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
