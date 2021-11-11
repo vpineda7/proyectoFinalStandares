@@ -282,12 +282,13 @@
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Home\Opciones_Cuenta.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
+    <Content Include="Views\Compra\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Categoria\" />
-    <Folder Include="Views\Compra\" />
     <Folder Include="Views\Inventario\" />
     <Folder Include="Views\Producto\" />
     <Folder Include="Views\Proveedor\" />

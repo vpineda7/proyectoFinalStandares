@@ -70,6 +70,14 @@ namespace ZonaTecnologica
 			}
 		}
 		
+		public System.Data.Linq.Table<Vcompra> Vcompras
+		{
+			get
+			{
+				return this.GetTable<Vcompra>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_validar_usuario")]
 		public ISingleResult<sp_validar_usuarioResult> sp_validar_usuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string login, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string rol)
 		{
@@ -110,6 +118,48 @@ namespace ZonaTecnologica
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, login, correo, primerNombre, segundoNombre, primerApellido, segundoApellido, fecha_vigencia, trylogin, foto, idRol, usuario);
 			return ((ISingleResult<SP_ModificarUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_EliminarCompra")]
+		public ISingleResult<SP_EliminarCompraResult> SP_EliminarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_compra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string usuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra, usuario);
+			return ((ISingleResult<SP_EliminarCompraResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vProductos")]
+		public ISingleResult<vProductosResult> vProductos()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<vProductosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vProveedores")]
+		public ISingleResult<vProveedoresResult> vProveedores()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<vProveedoresResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AgregarCompra")]
+		public ISingleResult<SP_AgregarCompraResult> SP_AgregarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio_u, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_producto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string usuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cantidad, precio_u, id_producto, id_proveedor, usuario);
+			return ((ISingleResult<SP_AgregarCompraResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificarCompra")]
+		public ISingleResult<SP_ModificarCompraResult> SP_ModificarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_compra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio_u, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_producto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(5)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuarioActualiza)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra, cantidad, precio_u, fecha, id_producto, id_proveedor, estado, usuarioActualiza);
+			return ((ISingleResult<SP_ModificarCompraResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_BuscarCompra")]
+		public ISingleResult<SP_BuscarCompraResult> SP_BuscarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_compra)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra);
+			return ((ISingleResult<SP_BuscarCompraResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -387,6 +437,195 @@ namespace ZonaTecnologica
 				if ((this._FechaActualiza != value))
 				{
 					this._FechaActualiza = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vcompras")]
+	public partial class Vcompra
+	{
+		
+		private int _id_compra;
+		
+		private int _id_producto;
+		
+		private string _producto;
+		
+		private int _cantidad;
+		
+		private decimal _precio_unitario;
+		
+		private decimal _total;
+		
+		private string _usuario;
+		
+		private int _id_proveedor;
+		
+		private string _nombre_proveedor;
+		
+		private System.DateTime _fecha_inserta;
+		
+		public Vcompra()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_compra", DbType="Int NOT NULL")]
+		public int id_compra
+		{
+			get
+			{
+				return this._id_compra;
+			}
+			set
+			{
+				if ((this._id_compra != value))
+				{
+					this._id_compra = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_producto", DbType="Int NOT NULL")]
+		public int id_producto
+		{
+			get
+			{
+				return this._id_producto;
+			}
+			set
+			{
+				if ((this._id_producto != value))
+				{
+					this._id_producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_producto", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string producto
+		{
+			get
+			{
+				return this._producto;
+			}
+			set
+			{
+				if ((this._producto != value))
+				{
+					this._producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		public int cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this._cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[precio unitario]", Storage="_precio_unitario", DbType="Money NOT NULL")]
+		public decimal precio_unitario
+		{
+			get
+			{
+				return this._precio_unitario;
+			}
+			set
+			{
+				if ((this._precio_unitario != value))
+				{
+					this._precio_unitario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Money NOT NULL")]
+		public decimal total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string usuario
+		{
+			get
+			{
+				return this._usuario;
+			}
+			set
+			{
+				if ((this._usuario != value))
+				{
+					this._usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_proveedor", DbType="Int NOT NULL")]
+		public int id_proveedor
+		{
+			get
+			{
+				return this._id_proveedor;
+			}
+			set
+			{
+				if ((this._id_proveedor != value))
+				{
+					this._id_proveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[nombre proveedor]", Storage="_nombre_proveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombre_proveedor
+		{
+			get
+			{
+				return this._nombre_proveedor;
+			}
+			set
+			{
+				if ((this._nombre_proveedor != value))
+				{
+					this._nombre_proveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[fecha inserta]", Storage="_fecha_inserta", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_inserta
+		{
+			get
+			{
+				return this._fecha_inserta;
+			}
+			set
+			{
+				if ((this._fecha_inserta != value))
+				{
+					this._fecha_inserta = value;
 				}
 			}
 		}
@@ -957,6 +1196,432 @@ namespace ZonaTecnologica
 				if ((this._mensaje != value))
 				{
 					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_EliminarCompraResult
+	{
+		
+		private System.Nullable<int> _codigo;
+		
+		private string _mensaje;
+		
+		public SP_EliminarCompraResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
+		public System.Nullable<int> codigo
+		{
+			get
+			{
+				return this._codigo;
+			}
+			set
+			{
+				if ((this._codigo != value))
+				{
+					this._codigo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class vProductosResult
+	{
+		
+		private int _id_producto;
+		
+		private string _nombre_producto;
+		
+		public vProductosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_producto", DbType="Int NOT NULL")]
+		public int id_producto
+		{
+			get
+			{
+				return this._id_producto;
+			}
+			set
+			{
+				if ((this._id_producto != value))
+				{
+					this._id_producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_producto", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string nombre_producto
+		{
+			get
+			{
+				return this._nombre_producto;
+			}
+			set
+			{
+				if ((this._nombre_producto != value))
+				{
+					this._nombre_producto = value;
+				}
+			}
+		}
+	}
+	
+	public partial class vProveedoresResult
+	{
+		
+		private int _id_proveedor;
+		
+		private string _nombre_proveedor;
+		
+		public vProveedoresResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_proveedor", DbType="Int NOT NULL")]
+		public int id_proveedor
+		{
+			get
+			{
+				return this._id_proveedor;
+			}
+			set
+			{
+				if ((this._id_proveedor != value))
+				{
+					this._id_proveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_proveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombre_proveedor
+		{
+			get
+			{
+				return this._nombre_proveedor;
+			}
+			set
+			{
+				if ((this._nombre_proveedor != value))
+				{
+					this._nombre_proveedor = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_AgregarCompraResult
+	{
+		
+		private System.Nullable<int> _id;
+		
+		private string _mensaje;
+		
+		public SP_AgregarCompraResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int")]
+		public System.Nullable<int> id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(26) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_ModificarCompraResult
+	{
+		
+		private System.Nullable<int> _codigo;
+		
+		private string _mensaje;
+		
+		public SP_ModificarCompraResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
+		public System.Nullable<int> codigo
+		{
+			get
+			{
+				return this._codigo;
+			}
+			set
+			{
+				if ((this._codigo != value))
+				{
+					this._codigo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(33) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_BuscarCompraResult
+	{
+		
+		private int _id_compra;
+		
+		private int _id_producto;
+		
+		private string _producto;
+		
+		private int _cantidad;
+		
+		private decimal _precioUnitario;
+		
+		private decimal _total;
+		
+		private string _usuario;
+		
+		private int _id_proveedor;
+		
+		private string _nombreProveedor;
+		
+		private System.DateTime _fechaInserta;
+		
+		private string _estado;
+		
+		public SP_BuscarCompraResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_compra", DbType="Int NOT NULL")]
+		public int id_compra
+		{
+			get
+			{
+				return this._id_compra;
+			}
+			set
+			{
+				if ((this._id_compra != value))
+				{
+					this._id_compra = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_producto", DbType="Int NOT NULL")]
+		public int id_producto
+		{
+			get
+			{
+				return this._id_producto;
+			}
+			set
+			{
+				if ((this._id_producto != value))
+				{
+					this._id_producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_producto", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string producto
+		{
+			get
+			{
+				return this._producto;
+			}
+			set
+			{
+				if ((this._producto != value))
+				{
+					this._producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		public int cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this._cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precioUnitario", DbType="Money NOT NULL")]
+		public decimal precioUnitario
+		{
+			get
+			{
+				return this._precioUnitario;
+			}
+			set
+			{
+				if ((this._precioUnitario != value))
+				{
+					this._precioUnitario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Money NOT NULL")]
+		public decimal total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string usuario
+		{
+			get
+			{
+				return this._usuario;
+			}
+			set
+			{
+				if ((this._usuario != value))
+				{
+					this._usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_proveedor", DbType="Int NOT NULL")]
+		public int id_proveedor
+		{
+			get
+			{
+				return this._id_proveedor;
+			}
+			set
+			{
+				if ((this._id_proveedor != value))
+				{
+					this._id_proveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreProveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombreProveedor
+		{
+			get
+			{
+				return this._nombreProveedor;
+			}
+			set
+			{
+				if ((this._nombreProveedor != value))
+				{
+					this._nombreProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaInserta", DbType="DateTime NOT NULL")]
+		public System.DateTime fechaInserta
+		{
+			get
+			{
+				return this._fechaInserta;
+			}
+			set
+			{
+				if ((this._fechaInserta != value))
+				{
+					this._fechaInserta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(30)")]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
 				}
 			}
 		}

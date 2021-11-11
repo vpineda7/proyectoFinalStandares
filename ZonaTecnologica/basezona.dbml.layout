@@ -2,10 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="basezona">
   <DataContextMoniker Name="/basezonaDataContext" />
   <nestedChildShapes>
-    <classShape Id="b14cf839-1b17-4fa8-801c-d5365e7c9a91" absoluteBounds="0.5, 0.5, 2, 3.6939111328124996">
+    <classShape Id="b14cf839-1b17-4fa8-801c-d5365e7c9a91" absoluteBounds="1.125, 0.5, 2, 3.6939111328124996">
       <DataClassMoniker Name="/basezonaDataContext/Vusuario" />
       <nestedChildShapes>
-        <elementListCompartment Id="37b359cd-cf93-42d9-b84f-a3a37674a628" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="37b359cd-cf93-42d9-b84f-a3a37674a628" absoluteBounds="1.1399999999999997, 0.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="021b3bab-ce0d-4f9a-99e6-ebdc79896f28" absoluteBounds="4.5, 0.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/basezonaDataContext/Vcompra" />
+      <nestedChildShapes>
+        <elementListCompartment Id="276ad0ff-b71a-449d-9efc-142a04cf6570" absoluteBounds="4.515, 1.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

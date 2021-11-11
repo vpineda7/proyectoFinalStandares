@@ -76,6 +76,8 @@ C:\Users\Benjamin\Desktop\Proyectos C#\ZonaTecnologica\ZonaTecnologica\obj\Debug
 C:\Users\Benjamin\Desktop\Proyectos C#\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CoreCompileInputs.cache
 C:\Users\Benjamin\Desktop\Proyectos C#\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.dll
 C:\Users\Benjamin\Desktop\Proyectos C#\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.pdb
+C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CoreCompileInputs.cache
+C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.AssemblyReference.cache
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\ZonaTecnologica.dll.config
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\ZonaTecnologica.dll
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\ZonaTecnologica.pdb
@@ -150,8 +152,6 @@ C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Sys
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Newtonsoft.Json.xml
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Antlr3.Runtime.pdb
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.AssemblyReference.cache
-C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CoreCompileInputs.cache
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CopyComplete
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.dll
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.pdb

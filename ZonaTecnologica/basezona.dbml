@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="estandares" Class="basezonaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=estandares;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="estandaresConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=estandares;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="estandaresConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Vusuarios" Member="Vusuarios">
     <Type Name="Vusuario">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -17,6 +17,20 @@
       <Column Name="rol" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="UsuarioActualiza" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="FechaActualiza" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vcompras" Member="Vcompras">
+    <Type Name="Vcompra">
+      <Column Name="id_compra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="producto" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[precio unitario]" Member="precio_unitario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="total" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[nombre proveedor]" Member="nombre_proveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="[fecha inserta]" Member="fecha_inserta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.sp_validar_usuario" Method="sp_validar_usuario">
@@ -97,6 +111,67 @@
     <ElementType Name="SP_ModificarUsuarioResult">
       <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_EliminarCompra" Method="SP_EliminarCompra">
+    <Parameter Name="id_compra" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_EliminarCompraResult">
+      <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensaje" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vProductos" Method="vProductos">
+    <ElementType Name="vProductosResult">
+      <Column Name="id_producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre_producto" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vProveedores" Method="vProveedores">
+    <ElementType Name="vProveedoresResult">
+      <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre_proveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_AgregarCompra" Method="SP_AgregarCompra">
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio_u" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="id_producto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_AgregarCompraResult">
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensaje" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_ModificarCompra" Method="SP_ModificarCompra">
+    <Parameter Name="id_compra" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio_u" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="id_producto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estado" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="usuarioActualiza" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="SP_ModificarCompraResult">
+      <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_BuscarCompra" Method="SP_BuscarCompra">
+    <Parameter Name="id_compra" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_BuscarCompraResult">
+      <Column Name="id_compra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="producto" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precioUnitario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="total" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaInserta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
