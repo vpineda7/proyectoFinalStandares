@@ -75,7 +75,7 @@ namespace ZonaTecnologica.Controllers
             try
             {
                 // TODO: Add update logic 
-                var Modelo = DB.SP_ModificarCompra(modelo.id_compra, modelo.cantidad, modelo.precioUnitario, modelo.id_producto, modelo.id_proveedor, modelo.estado, Convert.ToString(Session["UserName"])).SingleOrDefault();
+                var Modelo = DB.SP_ModificarCompra(id, modelo.cantidad, modelo.precioUnitario, modelo.id_producto, modelo.id_proveedor, modelo.estado, Convert.ToString(Session["UserName"])).SingleOrDefault();
                 if (Modelo.codigo == 0)
                 {
                     return RedirectToAction("Edit", new { id = id, message = Modelo.mensaje });

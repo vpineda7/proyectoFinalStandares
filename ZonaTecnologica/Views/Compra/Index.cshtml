@@ -4,11 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Compras</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+
+<a role="button" class="btn btn-default" href='@Url.Action("Create", "Compra")' style="margin-bottom: 2%;"><i class='bx bx-pencil'></i>Nueva compra</a>
+
 <table class="table">
     <tr>
         
