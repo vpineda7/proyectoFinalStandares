@@ -1,0 +1,98 @@
+﻿@model ZonaTecnologica.SP_BuscarCompraResult
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Compras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_compra)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaInserta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInserta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+<div class="form-actions no-color">
+    <a class="btn btn-default" href='@Url.Action("index", "Compra")'>Regresar</a> |
+    <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Compra", new { id = Model.id_compra})'><i class='bx bx-pencil'></i>Editar</a>
+
+
+</div>

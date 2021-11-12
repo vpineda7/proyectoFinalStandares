@@ -1,0 +1,115 @@
+﻿@model ZonaTecnologica.SP_BuscarCompraResult
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Desea eliminar esta compra?</h3>
+<div>
+    <h4>Compras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_producto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_proveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_proveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaInserta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInserta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a class="btn btn-default" href='@Url.Action("index", "Compra")'>Regresar</a> |
+            <input type="submit" value="Eliminar" class="btn btn-default" />
+
+
+        </div>
+    }
+</div>
