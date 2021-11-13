@@ -169,6 +169,13 @@ namespace ZonaTecnologica
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<vProveedoresResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_BuscarProveedor")]
+		public ISingleResult<SP_BuscarProveedorResult> SP_BuscarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_proveedor);
+			return ((ISingleResult<SP_BuscarProveedorResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vusuarios")]
@@ -645,6 +652,8 @@ namespace ZonaTecnologica
 		
 		private int _idProveedor;
 		
+		private string _idUsuario;
+		
 		private string _nombreProveedor;
 		
 		private char _estado;
@@ -667,6 +676,22 @@ namespace ZonaTecnologica
 				if ((this._idProveedor != value))
 				{
 					this._idProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
 				}
 			}
 		}
@@ -1711,6 +1736,104 @@ namespace ZonaTecnologica
 				if ((this._nombre_proveedor != value))
 				{
 					this._nombre_proveedor = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_BuscarProveedorResult
+	{
+		
+		private int _idProveedor;
+		
+		private string _idUsuario;
+		
+		private string _nombreProveedor;
+		
+		private char _estado;
+		
+		private string _usuarioInserta;
+		
+		public SP_BuscarProveedorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProveedor", DbType="Int NOT NULL")]
+		public int idProveedor
+		{
+			get
+			{
+				return this._idProveedor;
+			}
+			set
+			{
+				if ((this._idProveedor != value))
+				{
+					this._idProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreProveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombreProveedor
+		{
+			get
+			{
+				return this._nombreProveedor;
+			}
+			set
+			{
+				if ((this._nombreProveedor != value))
+				{
+					this._nombreProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="Char(1) NOT NULL")]
+		public char estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuarioInserta", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string usuarioInserta
+		{
+			get
+			{
+				return this._usuarioInserta;
+			}
+			set
+			{
+				if ((this._usuarioInserta != value))
+				{
+					this._usuarioInserta = value;
 				}
 			}
 		}

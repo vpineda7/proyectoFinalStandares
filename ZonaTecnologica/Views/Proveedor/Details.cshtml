@@ -1,0 +1,61 @@
+﻿@model ZonaTecnologica.SP_BuscarProveedorResult
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Proveedores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioInserta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioInserta)
+        </dd>
+
+    </dl>
+</div>
+
+<div class="form-actions no-color">
+    <a class="btn btn-default" href='@Url.Action("index", "Proveedor")'>Regresar</a> |
+    <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Proveedor", new { id = Model.idProveedor})'><i class='bx bx-pencil'></i>Editar</a>
+
+
+</div>

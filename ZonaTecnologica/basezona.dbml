@@ -36,6 +36,7 @@
   <Table Name="dbo.VistaProveedores" Member="VistaProveedores">
     <Type Name="VistaProveedore">
       <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Column Name="usuarioInserta" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
@@ -179,6 +180,16 @@
     <ElementType Name="vProveedoresResult">
       <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="nombre_proveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_BuscarProveedor" Method="SP_BuscarProveedor">
+    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_BuscarProveedorResult">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="usuarioInserta" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>
