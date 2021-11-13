@@ -1,11 +1,12 @@
 ﻿@model ZonaTecnologica.SP_BuscarProveedorResult
 
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Eliminar</h2>
 
+<h3>¿Desea eliminar este proveedor?</h3>
 <div>
     <h4>Proveedores</h4>
     <hr />
@@ -16,14 +17,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.idProveedor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.idUsuario)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.idUsuario)
         </dd>
 
         <dt>
@@ -45,11 +38,15 @@
         
 
     </dl>
-</div>
 
-<div class="form-actions no-color">
-    <a class="btn btn-default" href='@Url.Action("index", "Proveedor")'>Regresar</a> |
-    <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Proveedor", new { id = Model.idProveedor})'><i class='bx bx-pencil'></i>Editar</a>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+            <a class="btn btn-default" href='@Url.Action("index", "Proveedor")'>Regresar</a> |
+            <input type="submit" value="Eliminar" class="btn btn-default" />
 
 
+        </div>
+    }
 </div>

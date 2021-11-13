@@ -35,11 +35,10 @@
   </Table>
   <Table Name="dbo.VistaProveedores" Member="VistaProveedores">
     <Type Name="VistaProveedore">
-      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idUsuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="usuarioInserta" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.sp_validar_usuario" Method="sp_validar_usuario">
@@ -182,16 +181,6 @@
       <Column Name="estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_BuscarProveedor" Method="SP_BuscarProveedor">
-    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_BuscarProveedorResult">
-      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idUsuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="usuarioInserta" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_ModificarProveedor" Method="SP_ModificarProveedor">
     <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
     <Parameter Name="nombre_proveedor" Type="System.String" DbType="VarChar(200)" />
@@ -200,6 +189,31 @@
     <ElementType Name="SP_ModificarProveedorResult">
       <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="mensaje" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_EliminarProveedor" Method="SP_EliminarProveedor">
+    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_EliminarProveedorResult">
+      <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensaje" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_AgregarProveedor" Method="SP_AgregarProveedor">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SP_AgregarProveedorResult">
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensaje" Type="System.String" DbType="VarChar(29) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_BuscarProveedor" Method="SP_BuscarProveedor">
+    <Parameter Name="id_proveedor" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_BuscarProveedorResult">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

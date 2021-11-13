@@ -14,7 +14,7 @@ namespace ZonaTecnologica.Controllers
         public ActionResult Index(string message = "")
         {
             ViewBag.Message = message;
-            List<VistaProveedore> Lista = (from c in DB.VistaProveedores
+            List<VistaProveedore > Lista = (from c in DB.VistaProveedores
                                    select c).ToList();
             return View(Lista);
         }
@@ -27,24 +27,26 @@ namespace ZonaTecnologica.Controllers
         }
 
         // GET: Proveedor/Create
-        public ActionResult Create()
+        public ActionResult Create(string message = "")
         {
+            ViewBag.Message = message;
+            var Pro = DB.vProductos().ToList();
+            ViewBag.Pro = Pro;
             return View();
         }
 
         // POST: Proveedor/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(VistaProveedore modelo)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var Modelo = DB.SP_AgregarProveedor(modelo.nombreProveedor, Convert.ToString(Session["UserName"])).SingleOrDefault();
+                return RedirectToAction("Index", new { message = Modelo.mensaje });
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return RedirectToAction("Create", new { message = ex.Message });
             }
         }
 
@@ -77,24 +79,30 @@ namespace ZonaTecnologica.Controllers
         }
 
         // GET: Proveedor/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, string message = "")
         {
-            return View();
+            ViewBag.Message = message;
+                var Modelo = DB.SP_BuscarProveedor(id).Single();
+            return View(Modelo);
         }
 
         // POST: Proveedor/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, SP_BuscarCompraResult modelo)
         {
             try
             {
-                // TODO: Add delete logic here
+                var Modelo = DB.SP_EliminarProveedor(id, Convert.ToString(Session["UserName"])).SingleOrDefault();
+                if (Modelo.codigo == 0)
+                {
+                    return RedirectToAction("Delete", new { id = id, message = Modelo.mensaje });
+                }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { message = Modelo.mensaje });
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return RedirectToAction("Delete", new { id = id, message = ex.Message });
             }
         }
     }

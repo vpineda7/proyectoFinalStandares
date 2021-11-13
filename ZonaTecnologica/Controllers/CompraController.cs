@@ -102,7 +102,6 @@ namespace ZonaTecnologica.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
                 var Modelo = DB.SP_EliminarCompra(id, Convert.ToString(Session["UserName"])).SingleOrDefault();
                 if (Modelo.codigo == 0)
                 {

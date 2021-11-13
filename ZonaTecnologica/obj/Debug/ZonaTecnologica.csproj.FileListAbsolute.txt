@@ -155,7 +155,6 @@ C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Mic
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CopyComplete
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.dll
 C:\Users\despi\Downloads\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.pdb
-C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.AssemblyReference.cache
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CoreCompileInputs.cache
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.dll
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.pdb
@@ -234,3 +233,4 @@ C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\Z
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Antlr3.Runtime.pdb
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.CopyComplete
+C:\Users\despi\Zoho Docs\UTEC\estandares de programación\proyecto\3° entrega\ZonaTecnologica\ZonaTecnologica\ZonaTecnologica\obj\Debug\ZonaTecnologica.csproj.AssemblyReference.cache

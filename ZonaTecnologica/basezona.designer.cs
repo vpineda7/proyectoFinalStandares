@@ -170,18 +170,32 @@ namespace ZonaTecnologica
 			return ((ISingleResult<SP_BuscarCompraResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_BuscarProveedor")]
-		public ISingleResult<SP_BuscarProveedorResult> SP_BuscarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_proveedor);
-			return ((ISingleResult<SP_BuscarProveedorResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificarProveedor")]
 		public ISingleResult<SP_ModificarProveedorResult> SP_ModificarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string nombre_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuarioActualiza)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_proveedor, nombre_proveedor, estado, usuarioActualiza);
 			return ((ISingleResult<SP_ModificarProveedorResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_EliminarProveedor")]
+		public ISingleResult<SP_EliminarProveedorResult> SP_EliminarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string usuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_proveedor, usuario);
+			return ((ISingleResult<SP_EliminarProveedorResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AgregarProveedor")]
+		public ISingleResult<SP_AgregarProveedorResult> SP_AgregarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string usuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre, usuario);
+			return ((ISingleResult<SP_AgregarProveedorResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_BuscarProveedor")]
+		public ISingleResult<SP_BuscarProveedorResult> SP_BuscarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_proveedor);
+			return ((ISingleResult<SP_BuscarProveedorResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -659,19 +673,17 @@ namespace ZonaTecnologica
 		
 		private int _idProveedor;
 		
-		private string _idUsuario;
+		private string _Usuario;
 		
 		private string _nombreProveedor;
 		
 		private char _estado;
 		
-		private string _usuarioInserta;
-		
 		public VistaProveedore()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProveedor", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProveedor", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
 		public int idProveedor
 		{
 			get
@@ -687,18 +699,18 @@ namespace ZonaTecnologica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string idUsuario
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Usuario
 		{
 			get
 			{
-				return this._idUsuario;
+				return this._Usuario;
 			}
 			set
 			{
-				if ((this._idUsuario != value))
+				if ((this._Usuario != value))
 				{
-					this._idUsuario = value;
+					this._Usuario = value;
 				}
 			}
 		}
@@ -731,22 +743,6 @@ namespace ZonaTecnologica
 				if ((this._estado != value))
 				{
 					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuarioInserta", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string usuarioInserta
-		{
-			get
-			{
-				return this._usuarioInserta;
-			}
-			set
-			{
-				if ((this._usuarioInserta != value))
-				{
-					this._usuarioInserta = value;
 				}
 			}
 		}
@@ -1748,6 +1744,138 @@ namespace ZonaTecnologica
 		}
 	}
 	
+	public partial class SP_ModificarProveedorResult
+	{
+		
+		private System.Nullable<int> _codigo;
+		
+		private string _mensaje;
+		
+		public SP_ModificarProveedorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
+		public System.Nullable<int> codigo
+		{
+			get
+			{
+				return this._codigo;
+			}
+			set
+			{
+				if ((this._codigo != value))
+				{
+					this._codigo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(33) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_EliminarProveedorResult
+	{
+		
+		private System.Nullable<int> _codigo;
+		
+		private string _mensaje;
+		
+		public SP_EliminarProveedorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
+		public System.Nullable<int> codigo
+		{
+			get
+			{
+				return this._codigo;
+			}
+			set
+			{
+				if ((this._codigo != value))
+				{
+					this._codigo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_AgregarProveedorResult
+	{
+		
+		private System.Nullable<int> _id;
+		
+		private string _mensaje;
+		
+		public SP_AgregarProveedorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int")]
+		public System.Nullable<int> id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(29) NOT NULL", CanBeNull=false)]
+		public string mensaje
+		{
+			get
+			{
+				return this._mensaje;
+			}
+			set
+			{
+				if ((this._mensaje != value))
+				{
+					this._mensaje = value;
+				}
+			}
+		}
+	}
+	
 	public partial class SP_BuscarProveedorResult
 	{
 		
@@ -1758,8 +1886,6 @@ namespace ZonaTecnologica
 		private string _nombreProveedor;
 		
 		private char _estado;
-		
-		private string _usuarioInserta;
 		
 		public SP_BuscarProveedorResult()
 		{
@@ -1825,66 +1951,6 @@ namespace ZonaTecnologica
 				if ((this._estado != value))
 				{
 					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuarioInserta", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string usuarioInserta
-		{
-			get
-			{
-				return this._usuarioInserta;
-			}
-			set
-			{
-				if ((this._usuarioInserta != value))
-				{
-					this._usuarioInserta = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SP_ModificarProveedorResult
-	{
-		
-		private System.Nullable<int> _codigo;
-		
-		private string _mensaje;
-		
-		public SP_ModificarProveedorResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
-		public System.Nullable<int> codigo
-		{
-			get
-			{
-				return this._codigo;
-			}
-			set
-			{
-				if ((this._codigo != value))
-				{
-					this._codigo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mensaje", DbType="VarChar(33) NOT NULL", CanBeNull=false)]
-		public string mensaje
-		{
-			get
-			{
-				return this._mensaje;
-			}
-			set
-			{
-				if ((this._mensaje != value))
-				{
-					this._mensaje = value;
 				}
 			}
 		}
