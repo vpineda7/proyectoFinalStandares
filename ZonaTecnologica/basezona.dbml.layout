@@ -14,10 +14,10 @@
         <elementListCompartment Id="276ad0ff-b71a-449d-9efc-142a04cf6570" absoluteBounds="4.515, 1.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="24e252df-ebc9-4399-9fe4-472fe5d2c1ce" absoluteBounds="3.75, 3.875, 2, 1.7708968098958331">
+    <classShape Id="83e1d491-e0a4-4413-b590-36f733ce36a7" absoluteBounds="3.75, 3.875, 2, 1.7708968098958331">
       <DataClassMoniker Name="/basezonaDataContext/VistaProveedore" />
       <nestedChildShapes>
-        <elementListCompartment Id="fa6bed84-6107-49dd-802e-d758c2f3af7b" absoluteBounds="3.7649999999999997, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0fad7959-8e3e-42e9-9b87-9403580fa47a" absoluteBounds="3.7649999999999997, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

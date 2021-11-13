@@ -49,24 +49,30 @@ namespace ZonaTecnologica.Controllers
         }
 
         // GET: Proveedor/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message = "")
         {
-            return View();
+            ViewBag.Message = message;
+            var Modelo = DB.SP_BuscarProveedor(id).Single();
+            return View(Modelo);
         }
 
         // POST: Proveedor/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, SP_BuscarProveedorResult modelo)
         {
             try
             {
-                // TODO: Add update logic here
+                var Modelo = DB.SP_ModificarProveedor(id, modelo.nombreProveedor, modelo.estado, Convert.ToString(Session["UserName"])).SingleOrDefault();
+                if (Modelo.codigo == 0)
+                {
+                    return RedirectToAction("Edit", new { id = id, message = Modelo.mensaje });
+                }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { message = Modelo.mensaje });
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return RedirectToAction("Edit", new { id = id, message = ex.Message });
             }
         }
 
