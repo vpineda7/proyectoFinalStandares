@@ -78,6 +78,14 @@ namespace ZonaTecnologica
 			}
 		}
 		
+		public System.Data.Linq.Table<VistaProveedore> VistaProveedores
+		{
+			get
+			{
+				return this.GetTable<VistaProveedore>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_validar_usuario")]
 		public ISingleResult<sp_validar_usuarioResult> sp_validar_usuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string login, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string rol)
 		{
@@ -134,13 +142,6 @@ namespace ZonaTecnologica
 			return ((ISingleResult<vProductosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vProveedores")]
-		public ISingleResult<vProveedoresResult> vProveedores()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<vProveedoresResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AgregarCompra")]
 		public ISingleResult<SP_AgregarCompraResult> SP_AgregarCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio_u, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_producto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_proveedor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string usuario)
 		{
@@ -160,6 +161,13 @@ namespace ZonaTecnologica
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_compra);
 			return ((ISingleResult<SP_BuscarCompraResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vProveedores")]
+		public ISingleResult<vProveedoresResult> vProveedores()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<vProveedoresResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -626,6 +634,87 @@ namespace ZonaTecnologica
 				if ((this._fecha_inserta != value))
 				{
 					this._fecha_inserta = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VistaProveedores")]
+	public partial class VistaProveedore
+	{
+		
+		private int _idProveedor;
+		
+		private string _nombreProveedor;
+		
+		private char _estado;
+		
+		private string _usuarioInserta;
+		
+		public VistaProveedore()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProveedor", DbType="Int NOT NULL")]
+		public int idProveedor
+		{
+			get
+			{
+				return this._idProveedor;
+			}
+			set
+			{
+				if ((this._idProveedor != value))
+				{
+					this._idProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreProveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombreProveedor
+		{
+			get
+			{
+				return this._nombreProveedor;
+			}
+			set
+			{
+				if ((this._nombreProveedor != value))
+				{
+					this._nombreProveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="Char(1) NOT NULL")]
+		public char estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usuarioInserta", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string usuarioInserta
+		{
+			get
+			{
+				return this._usuarioInserta;
+			}
+			set
+			{
+				if ((this._usuarioInserta != value))
+				{
+					this._usuarioInserta = value;
 				}
 			}
 		}
@@ -1289,50 +1378,6 @@ namespace ZonaTecnologica
 		}
 	}
 	
-	public partial class vProveedoresResult
-	{
-		
-		private int _id_proveedor;
-		
-		private string _nombre_proveedor;
-		
-		public vProveedoresResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_proveedor", DbType="Int NOT NULL")]
-		public int id_proveedor
-		{
-			get
-			{
-				return this._id_proveedor;
-			}
-			set
-			{
-				if ((this._id_proveedor != value))
-				{
-					this._id_proveedor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_proveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string nombre_proveedor
-		{
-			get
-			{
-				return this._nombre_proveedor;
-			}
-			set
-			{
-				if ((this._nombre_proveedor != value))
-				{
-					this._nombre_proveedor = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_AgregarCompraResult
 	{
 		
@@ -1622,6 +1667,50 @@ namespace ZonaTecnologica
 				if ((this._estado != value))
 				{
 					this._estado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class vProveedoresResult
+	{
+		
+		private int _id_proveedor;
+		
+		private string _nombre_proveedor;
+		
+		public vProveedoresResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_proveedor", DbType="Int NOT NULL")]
+		public int id_proveedor
+		{
+			get
+			{
+				return this._id_proveedor;
+			}
+			set
+			{
+				if ((this._id_proveedor != value))
+				{
+					this._id_proveedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_proveedor", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string nombre_proveedor
+		{
+			get
+			{
+				return this._nombre_proveedor;
+			}
+			set
+			{
+				if ((this._nombre_proveedor != value))
+				{
+					this._nombre_proveedor = value;
 				}
 			}
 		}

@@ -8,16 +8,22 @@ namespace ZonaTecnologica.Controllers
 {
     public class ProveedorController : Controller
     {
+        basezonaDataContext DB = new basezonaDataContext();
+
         // GET: Proveedor
-        public ActionResult Index()
+        public ActionResult Index(string message = "")
         {
-            return View();
+            ViewBag.Message = message;
+            List<VistaProveedore> Lista = (from c in DB.VistaProveedores
+                                   select c).ToList();
+            return View(Lista);
         }
 
         // GET: Proveedor/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var Modelo = DB.SP_BuscarProveedor(id).Single();
+            return View(Modelo);
         }
 
         // GET: Proveedor/Create

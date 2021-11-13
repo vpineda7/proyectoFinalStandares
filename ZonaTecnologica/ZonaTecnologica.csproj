@@ -286,6 +286,7 @@
     <Content Include="Views\Compra\Edit.cshtml" />
     <Content Include="Views\Compra\Details.cshtml" />
     <Content Include="Views\Compra\Delete.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,7 +294,6 @@
     <Folder Include="Views\Categoria\" />
     <Folder Include="Views\Inventario\" />
     <Folder Include="Views\Producto\" />
-    <Folder Include="Views\Proveedor\" />
     <Folder Include="Views\Venta\" />
   </ItemGroup>
   <ItemGroup>

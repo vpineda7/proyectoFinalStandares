@@ -33,6 +33,14 @@
       <Column Name="[fecha inserta]" Member="fecha_inserta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.VistaProveedores" Member="VistaProveedores">
+    <Type Name="VistaProveedore">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="usuarioInserta" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_validar_usuario" Method="sp_validar_usuario">
     <Parameter Name="login" Type="System.String" DbType="VarChar(15)" />
     <Parameter Name="password" Type="System.String" DbType="VarChar(15)" />
@@ -127,12 +135,6 @@
       <Column Name="nombre_producto" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.vProveedores" Method="vProveedores">
-    <ElementType Name="vProveedoresResult">
-      <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="nombre_proveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_AgregarCompra" Method="SP_AgregarCompra">
     <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
     <Parameter Name="precio_u" Type="System.Decimal" DbType="Money" />
@@ -171,6 +173,12 @@
       <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="fechaInserta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vProveedores" Method="vProveedores">
+    <ElementType Name="vProveedoresResult">
+      <Column Name="id_proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre_proveedor" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

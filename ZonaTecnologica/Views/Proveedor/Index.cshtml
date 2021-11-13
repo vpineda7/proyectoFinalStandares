@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ZonaTecnologica.VistaProveedore>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Proveedores</h2>
+
+<a role="button" class="btn btn-default" href='@Url.Action("Create", "Proveedores")' style="margin-bottom: 2%;"><i class='bx bx-pencil'></i>Nueva compra</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarioInserta)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuarioInserta)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a role="button" class="btn btn-default" href='@Url.Action("Edit", "Proveedor", new { id = item.idProveedor })'><i class='bx bx-pencil'></i>Editar</a>
+                    <a role="button" class="btn btn-default" href='@Url.Action("Details", "Proveedor", new { id = item.idProveedor })'><i class='bx bx-show'></i>Detalles</a>
+                    <a role="button" class="btn btn-default" href='@Url.Action("Delete", "Proveedor", new { id = item.idProveedor })'><i class='bx bx-trash'></i>Eliminar</a>
+                </div>
+
+            </td>
+        </tr>
+    }
+
+</table>
